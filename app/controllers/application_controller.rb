@@ -1,4 +1,5 @@
 require 'rack-flash'
+
 class ApplicationController < Sinatra::Base
   use Rack::Flash
   register Sinatra::ActiveRecordExtension
@@ -59,5 +60,15 @@ class ApplicationController < Sinatra::Base
 
     flash[:message] = "Successfully updated song."
     redirect("/songs/#{@song.slug}")
+  end
+
+  get '/genres' do
+    @genres = Genre.all
+    erb :'genres/index'
+  end
+
+  get '/genres/:slug' do
+    @genre = Genre.find_by_slug(params[:slug])
+    erb :'/genres/show'
   end
 end
