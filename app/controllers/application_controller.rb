@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
 
   get '/artists' do
     @artists = Artist.all
-    erb :index2
+    erb :'artists/index'
   end
 
   get '/artists/:slug' do
