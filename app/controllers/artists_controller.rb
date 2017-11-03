@@ -1,7 +1,7 @@
 class ArtistsController < ApplicationController
   get '/artists' do
     @artists = Artist.all
-    erb :index
+    erb :index2
   end
 
   get '/artists/:slug' do
